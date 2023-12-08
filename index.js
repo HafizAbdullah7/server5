@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // Import the 'path' module
+const path = require('path');
 const ytdl = require('ytdl-core');
 const app = express();
 
@@ -19,6 +19,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(4000, () => {
-  console.log('Server is running on port 4000');
+const port = process.env.PORT || 4000; // Use the provided PORT from Vercel or default to 4000
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
